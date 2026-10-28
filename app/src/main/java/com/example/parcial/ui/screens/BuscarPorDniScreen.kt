@@ -40,6 +40,10 @@ import com.example.parcial.ui.components.ErrorMessage
 import com.example.parcial.ui.components.LoadingIndicator
 import com.example.parcial.viewmodel.DenunciaViewModel
 
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.TopAppBarDefaults
+import com.example.parcial.ui.theme.HeroGradientStart
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BuscarPorDniScreen(
@@ -55,12 +59,15 @@ fun BuscarPorDniScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Buscar por DNI") },
+                title = { Text("🔍 Buscar por DNI", fontWeight = FontWeight.Bold, color = Color.White) },
                 navigationIcon = {
                     TextButton(onClick = onNavigateBack) {
-                        Text("← Volver")
+                        Text("← Volver", color = Color.White, fontWeight = FontWeight.Bold)
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = HeroGradientStart
+                )
             )
         }
     ) { innerPadding ->

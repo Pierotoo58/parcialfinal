@@ -50,6 +50,9 @@ import com.example.parcial.ui.components.ErrorMessage
 import com.example.parcial.ui.components.LoadingIndicator
 import com.example.parcial.viewmodel.DenunciaViewModel
 
+import androidx.compose.material3.TopAppBarDefaults
+import com.example.parcial.ui.theme.HeroGradientStart
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetalleDenunciaScreen(
@@ -85,12 +88,15 @@ fun DetalleDenunciaScreen(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = { Text("Detalle de Denuncia") },
+                title = { Text("🔎 Detalle de Denuncia", fontWeight = FontWeight.Bold, color = Color.White) },
                 navigationIcon = {
                     TextButton(onClick = onNavigateBack) {
-                        Text("← Volver")
+                        Text("← Volver", color = Color.White, fontWeight = FontWeight.Bold)
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = HeroGradientStart
+                )
             )
         }
     ) { innerPadding ->
@@ -214,7 +220,7 @@ fun DetalleDenunciaScreen(
                             Spacer(modifier = Modifier.height(16.dp))
 
                             DetailItem(label = "DNI del Ciudadano", value = denuncia.dni)
-                            DetailItem(label = "Tipo de Incidente", value = denuncia.tipo)
+                            DetailItem(label = "Tipo de Denuncia", value = denuncia.tipo)
                             DetailItem(label = "Fecha y Hora", value = denuncia.fecha.ifBlank { "No especificada" })
                             DetailItem(label = "Dirección", value = denuncia.direccion)
                             DetailItem(label = "Descripción", value = denuncia.descripcion)

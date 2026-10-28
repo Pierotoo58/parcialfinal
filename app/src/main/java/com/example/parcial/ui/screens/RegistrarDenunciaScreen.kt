@@ -42,6 +42,10 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+import androidx.compose.ui.graphics.Color
+import com.example.parcial.ui.theme.HeroGradientStart
+import androidx.compose.material3.TopAppBarDefaults
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegistrarDenunciaScreen(
@@ -76,12 +80,15 @@ fun RegistrarDenunciaScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Registrar Denuncia") },
+                title = { Text("➕ Registrar Denuncia", fontWeight = FontWeight.Bold, color = Color.White) },
                 navigationIcon = {
                     TextButton(onClick = onNavigateBack) {
-                        Text("← Volver")
+                        Text("← Volver", color = Color.White, fontWeight = FontWeight.Bold)
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = HeroGradientStart
+                )
             )
         }
     ) { innerPadding ->
@@ -100,7 +107,7 @@ fun RegistrarDenunciaScreen(
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "Completa los datos del incidente. El estado inicial se registrará como Pendiente.",
+                text = "Completa los datos de la denuncia. El estado inicial se registrará como Pendiente.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -183,7 +190,7 @@ fun RegistrarDenunciaScreen(
                         direccionError = null
                     }
                 },
-                label = { Text("Dirección del Incidente") },
+                label = { Text("Dirección de la Denuncia") },
                 isError = direccionError != null,
                 supportingText = {
                     if (direccionError != null) {
@@ -205,7 +212,7 @@ fun RegistrarDenunciaScreen(
                         descripcionError = null
                     }
                 },
-                label = { Text("Descripción del Incidente") },
+                label = { Text("Descripción de la Denuncia") },
                 isError = descripcionError != null,
                 supportingText = {
                     if (descripcionError != null) {
